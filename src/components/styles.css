@@ -51,7 +51,7 @@ input[type=submit] {
 }
 
 /* Карточка пиццы*/
-.pizza {
+.user {
   background: white;
   border: 1px solid #ededed;
   box-shadow: 0 12px 24px 0 rgba(0,0,0,0.09);
@@ -62,13 +62,13 @@ input[type=submit] {
   margin-bottom: 22px;
 }
 
-.pizza img {
+.user img {
   width: 252px;
   height: 200px;
   object-fit: contain;
 }
 
-.pizza span {
+.user span {
   background: #ff0000;
   color: white;
   font-weight: 600;
@@ -81,12 +81,12 @@ input[type=submit] {
   right: 0;
 }
 
-.pizza .pizza-controls {
+.user .user-controls {
   position: absolute;
   top: 5px;
   left: 5px;
 }
-.pizza svg {
+.user svg {
   width: 22px;
   height: 22px;
   cursor: pointer;
@@ -94,12 +94,12 @@ input[type=submit] {
   color: #392e4a;
 }
 
-.pizza a {
+.user a {
   color: #fff;
   text-decoration: none;
 }
 
-.pizza h2 {
+.user h2 {
   margin: 0 40px;
   text-align: center;
   margin-top: -1rem;
@@ -155,21 +155,21 @@ input[type=submit] {
 }
 
 /* Страница каждой пиццы */
-.pizza-page img {
+.user-page img {
   width: 420px;
   height: 100%;
   object-fit: contain;
 }
-.pizza-page h2 {
+.user-page h2 {
   font-size: 52px;
   margin-top: -3rem;
 }
-.pizza-page p {
+.user-page p {
   font-size: 22px;
   line-height: 2;
   text-align: center;
 }
-.pizza-page span {
+.user-page span {
   font-size: 42px;
   transform: rotate(4deg);
 }

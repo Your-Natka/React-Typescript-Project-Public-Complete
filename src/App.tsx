@@ -1,41 +1,41 @@
 import React, { FC, useState } from 'react';
-import AddPizzaForm from './components/AddPizzaForm';
-import DisplayPizzas from './components/DisplayPizzas';
-import Pizza from './models/Pizza';
+import AddUserForm from './components/AddUserForm';
+import DisplayUsers from './components/DisplayUsers';
+import User from './models/User';
 import './App.css';
 
 
 const App: FC = () => {
-  const [pizzasList, setPizzasList] = useState<Pizza[]>([]);
+  const [usersList, setUsersList] = useState<User[]>([]);
 
-  const addPizza = (newPizza: Pizza) => {
-    setPizzasList([...pizzasList, newPizza]);
+  const addUser = (newUser: User) => {
+    setUsersList([...usersList, newUser]);
   }
 
-  const updatePizza = (newPizza: Pizza) => {
-    setPizzasList(pizzasList.map((pizza) => 
-      (pizza.id === newPizza.id ? newPizza : pizza)));
+  const updateUser = (newUser: User) => {
+    setUsersList(usersList.map((user) => 
+      (user.id === newUser.id ? newUser : user)));
   }
 
-  const deletePizza = (id: number) => {
-    const newPizzasList = pizzasList.filter(pizza => pizza.id !== id);
-    setPizzasList(newPizzasList);
+  const deleteUser = (id: number) => {
+    const newUsersList = usersList.filter(user => user.id !== id);
+    setUsersList(newUsersList);
   }
 
-  console.log('pizzasList >>>>> ', pizzasList);
+  console.log('usersList >>>>> ', usersList);
 
   return (
     <div className="App">
       <div className="wrap">
-        <span className='heading'>Наша пиццерия</span>
-        <AddPizzaForm 
-          addPizza={addPizza}
+        <span className='heading'>Наша таблиця</span>
+        <AddUserForm 
+          addUser={addUser}
         />
 
-        <DisplayPizzas 
-          pizzasList={pizzasList}
-          deletePizza={deletePizza}
-          updatePizza={updatePizza}
+        <DisplayUsers 
+          usersList={usersList}
+          deleteUser={deleteUser}
+          updateUser={updateUser}
         />
       </div>
     </div>

@@ -1,10 +1,10 @@
 import React, { FC, ChangeEvent, FormEvent, useState } from 'react';
-import Pizza from '../models/Pizza';
+import User from '../models/User';
 import './styles.css';
 
 
-interface AddPizzaFormProps {
-  addPizza: (newPizza: Pizza) => void;
+interface AddUserFormProps {
+  addUser: (newUser: User) => void;
 }
 
 const initState = {
@@ -13,15 +13,15 @@ const initState = {
   img: '',
 }
 
-const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
-  const [newPizza, setNewPizza] = 
+const AddUserForm: FC<AddUserFormProps> = ({ addUser }) => {
+  const [newUser, setNewUser] = 
     useState<{title: string, price: string, img: string}>(initState);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     
-    setNewPizza({
-      ...newPizza,
+    setNewUser({
+      ...newUser,
       [name]: value
     });
   }
@@ -29,20 +29,20 @@ const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    const { title, price, img } = newPizza;
+    const { title, price, img } = newUser;
 
     if (title && price && img) {
-      addPizza({
+      addUser({
         title,
         img,
         price: Number(price),
         id: Date.now()
       });
-      setNewPizza(initState);
+      setNewUser(initState);
     }
   }
 
-  console.log('new pizza>>>>', newPizza)
+  console.log('new user>>>>', newUser)
 
   return (
     <form onSubmit={handleSubmit}>
@@ -51,21 +51,21 @@ const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
         type="text"
         placeholder="Название"
         onChange={handleChange}
-        value={newPizza.title}
+        value={newUser.title}
       />
       <input 
         name="price"
         type="text"
         placeholder="Стоимость"
         onChange={handleChange}
-        value={newPizza.price}
+        value={newUser.price}
       />
       <input 
         name="img"
         type="text"
         placeholder="Изображение"
         onChange={handleChange}
-        value={newPizza.img}
+        value={newUser.img}
       />
       <button type="submit">
         + Добавить в меню
@@ -75,4 +75,4 @@ const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
 }
 
 
-export default AddPizzaForm;
+export default AddUserForm;

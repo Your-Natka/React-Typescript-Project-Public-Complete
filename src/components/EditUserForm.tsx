@@ -1,25 +1,25 @@
 import React, { FC, ChangeEvent, FormEvent, useState } from 'react';
-import Pizza from '../models/Pizza';
+import User from '../models/User';
 import './styles.css';
 
 
-interface EditPizzaFormProps {
-  data: Pizza;
-  updatePizza: (newPizza: Pizza) => void;
+interface EditUserFormProps {
+  data: User;
+  updateUser: (newUser: User) => void;
   handleToggleEdit: () => void;
 }
 
 
-const EditPizzaForm: FC<EditPizzaFormProps> = 
-({ data, updatePizza, handleToggleEdit }) => {
-  const [editPizza, setEditPizza] = 
-    useState<Pizza>(data);
+const EditUserForm: FC<EditUserFormProps> = 
+({ data, updateUser, handleToggleEdit }) => {
+  const [editUser, setEditUser] = 
+    useState<User>(data);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     
-    setEditPizza({
-      ...editPizza,
+    setEditUser({
+      ...editUser,
       [name]: value
     });
   }
@@ -27,15 +27,15 @@ const EditPizzaForm: FC<EditPizzaFormProps> =
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    const { title, price, img } = editPizza;
+    const { title, price, img } = editUser;
 
     if (title && price && img) {
-      updatePizza(editPizza);
+      updateUser(editUser);
       handleToggleEdit();
     }
   }
 
-  console.log('edit pizza>>>>', editPizza)
+  console.log('edit user>>>>', editUser)
 
   return (
     <form 
@@ -46,21 +46,21 @@ const EditPizzaForm: FC<EditPizzaFormProps> =
         type="text"
         placeholder="Название"
         onChange={handleChange}
-        value={editPizza.title}
+        value={editUser.title}
       />
       <input 
         name="price"
         type="text"
         placeholder="Стоимость"
         onChange={handleChange}
-        value={editPizza.price}
+        value={editUser.price}
       />
       <input 
         name="img"
         type="text"
         placeholder="Изображение"
         onChange={handleChange}
-        value={editPizza.img}
+        value={editUser.img}
       />
       <button type="submit">
         Подтвердить
@@ -70,4 +70,4 @@ const EditPizzaForm: FC<EditPizzaFormProps> =
 }
 
 
-export default EditPizzaForm;
+export default EditUserForm;
